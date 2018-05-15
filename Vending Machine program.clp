@@ -46,7 +46,7 @@
         (bind ?calcAmount (- ?calcAmount 0.10))
     )
     (if(> ?calcAmount 0) then
-        (printout t "You need R " ?calcAmount crlf))
+        (printout t "You need to pay a balance of R " ?calcAmount crlf))
     )
     (paymentChange ?calcAmount)
 )
@@ -66,7 +66,7 @@
     (if (eq ?choice sw) then
         (bind ?priceChoice 12.50)
     )
-    (printout t "You need R " ?priceChoice crlf)
+    (printout t "Pay the following amount R " ?priceChoice crlf)
     (printout t "You may enter the following amounts: crlf 
                  R5, R2, R1, c50, c20, c10" crlf
                 "Enter amount for input : " )
