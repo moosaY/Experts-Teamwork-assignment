@@ -15,7 +15,7 @@
 ; Function to retrieve amount of change if any
 (deffunction paymentChange (?amountChange)
     (if (< ?amountChange 0) then
-        (printout t "Dont forget your change: R " (* ?total -1) crlf ; used -1 because it retrieves a negative if there is change when we want positive
+        (printout t "Dont forget your change: R " (* ?amountChange -1) crlf ; used -1 because it retrieves a negative if there is change when we want positive
                     "Come back anytime for more goodies" crlf)
     else
         (printout t "You do not have any change, have a nice day" crlf)
@@ -67,7 +67,7 @@
         (bind ?priceChoice 12.50)
     )
     (printout t "You need R " ?priceChoice crlf)
-    (printout t "You may enter the following amounts: clf 
+    (printout t "You may enter the following amounts: crlf 
                  R5, R2, R1, c50, c20, c10" crlf
                 "Enter amount for input : " )
     (addPayment ?priceChoice)
