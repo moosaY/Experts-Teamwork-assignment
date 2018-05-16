@@ -6,16 +6,16 @@
 
 ; Facts used when instantiatng 
 (deffacts itemDetails
-    (items (itemName chocolate) (itemPrice 15.0))
-    (items (itemName cola) (itemPrice 8.5))
-    (items (itemName orange) (itemPrice 10.0))
-    (items (itemName sweets) (itemPrice 12.5))
+    (items (itemName chocolate) (itemPrice 15.00))
+    (items (itemName cola) (itemPrice 8.50))
+    (items (itemName orange) (itemPrice 10.00))
+    (items (itemName sweets) (itemPrice 12.50))
 )
 
 ; Function to retrieve amount of change if any
 (deffunction paymentChange (?amountChange)
     (if (< ?amountChange 0) then
-        (printout t "Dont forget your change: R " (* ?amountChange -1) crlf ; used -1 because it retrieves a negative if there is change when we want positive
+        (printout t "Dont forget your change: R " (* ?amountChange -1) "0" crlf ; used -1 because it retrieves a negative if there is change when we want positive
                     "Come back anytime for more goodies" crlf)
     else
         (printout t "You do not have any change, have a nice day" crlf)
@@ -46,7 +46,7 @@
         (bind ?calcAmount (- ?calcAmount 0.10))
     )
     (if(> ?calcAmount 0) then
-        (printout t "You need to pay a balance of R " ?calcAmount crlf))
+        (printout t "You have a balance of R " ?calcAmount "0" crlf))
     )
     (paymentChange ?calcAmount)
 )
@@ -66,21 +66,21 @@
     (if (eq ?choice sw) then
         (bind ?priceChoice 12.50)
     )
-    (printout t "Pay the following amount R " ?priceChoice crlf)
-    (printout t "You may enter the following amounts: crlf 
-                 R5, R2, R1, c50, c20, c10" crlf
+    (printout t "Your total amount to be paid is " ?priceChoice "0" crlf)
+    (printout t "You may enter the following amounts: " crlf 
+                " R5, R2, R1, c50, c20, c10" crlf
                 "Enter amount for input : " )
     (addPayment ?priceChoice)
 )
 
 ; Rule used to as the user what item they would like
-(defrule print
+(defrule askItems
 =>
     (printout t "Choose one of the following : " crlf
                 "Chocolate : ch" crlf
                 "Cola : co" crlf
                 "Orange : or" crlf
-                "Sweets : sw" crlf crlf
+                "Sweets : sw" crlf)
     (printout t "Your choice: ")
     (addItem)
 )
